@@ -9,4 +9,8 @@ MV3 Chrome Extension for ripping hard-coded/baked-in/non-CC subtitles from Youtu
 - Create an [MV3 Chrome Extension](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - Scan images in YouTube videos for subtitles [(Example video without CC but has "baked" subs or whatever the term is)](https://www.youtube.com/watch?v=j92Wv3l89n8)
 - Extract subtitles and render as CC (basically want to force-add subtitles)
+- HAVE FUN WHILE DOING IT!
 - BONUS: Catch "pop-up" subtitles
+
+## Resources
+- Code Camp MV3 YT extension tutorial
