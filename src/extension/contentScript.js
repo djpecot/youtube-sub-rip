@@ -2,8 +2,9 @@ import {getTime} from './utils'
 
 (() => {
     let youtubeLeftControls, youtubePlayer;
-    let currentVideo = "";
+    let currentVideo = ""
     let currentVideoBookmarks = [];
+
 
     chrome.runtime.onMessage.addListener((obj, sender, response) => {
         const { type, value, videoId } = obj;
@@ -24,9 +25,9 @@ import {getTime} from './utils'
         )
     }
 
-    const newVideoLoaded = async () => {
+    const newVideoLoaded = () => {
         const bookmarkBtnExists = document.getElementsByClassName("bookmark-btn")[0];
-        console.log(bookmarkBtnExists);
+        currentVideoBookmarks = await fetchBookmarks()
 
         if (!bookmarkBtnExists) {
             const bookmarkBtn = document.createElement("img");
