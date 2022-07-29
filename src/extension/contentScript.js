@@ -50,13 +50,15 @@ const getTime = (t) => {
         }
     };
 
-    const addNewBookmarkEventHandler = () => {
+    const addNewBookmarkEventHandler = async () => {
         const currentTime = youtubePlayer.currentTime;
         const newBookmark = {
             time: currentTime,
             desc: 'Bookmark at ' + getTime(currentTime),
         };
-        console.log(newBookmark);
+
+        currentVideoBookmarks = await fetchBookmarks();
+        console.log('You added a new bookmark!', newBookmark);
         // Doug: Note chrome storage needs to store as JSON @paige
         // We can think about how to store subtitles once extracted, locally for user or?
         chrome.storage.sync.set({
