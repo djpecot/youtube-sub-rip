@@ -2,5 +2,8 @@
     "type": "module",
     "devDependencies": {
         "prettier": "^2.7.1"
+    },
+    "dependencies": {
+        "react": "^18.2.0"
     }
 }
