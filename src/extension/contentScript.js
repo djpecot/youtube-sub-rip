@@ -23,7 +23,7 @@ const getTime = (t) => {
 
     const fetchBookmarks = () => {
         return new Promise((resolve) => {
-            chrome.storage.sync.get({ currentVideo }, (obj) => {
+            chrome.storage.sync.get([currentVideo], (obj) => {
                 resolve(obj[currentVideo] ? JSON.parse(obj[currentVideo]) : []);
             });
         });
@@ -58,7 +58,8 @@ const getTime = (t) => {
         };
 
         currentVideoBookmarks = await fetchBookmarks();
-        console.log('You added a new bookmark!', newBookmark);
+        // console.log('You added a new bookmark!', newBookmark);
+        // console.log('What is the current Video?', currentVideo);
         // Doug: Note chrome storage needs to store as JSON @paige
         // We can think about how to store subtitles once extracted, locally for user or?
         chrome.storage.sync.set({
@@ -68,7 +69,10 @@ const getTime = (t) => {
                 )
             ),
         });
+        // // Check storage state
+        // chrome.storage.local.get([currentVideo], (result) => {
+        //     console.log('Value currently is ' + JSON.stringify(result));
+        // });
     };
-
     newVideoLoaded();
 })();

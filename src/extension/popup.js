@@ -1,9 +1,38 @@
 import { getCurrentTab } from './utils.js';
 
 // adding a new bookmark row to the popup
-const addNewBookmark = () => {};
+const addNewBookmark = (bookmarksElement, bookmark) => {
+    const bookmarkTitleElement = document.createElement('div');
+    const newBookmarkElement = document.createElement('div');
 
-const viewBookmarks = () => {};
+    bookmarkTitleElement.textContent = bookmark.desc + bookmark.time;
+    bookmarkTitleElement.className = 'bookmark-title';
+
+    // Set a  unique key for each time
+    newBookmarkElement.id = 'bookmark-' + bookmark.time;
+    newBookmarkElement.className = 'bookmark';
+    newBookmarkElement.setAttribute('timestamp', bookmark.time);
+    // newBookmarkElement.textContent = bookmark.time;
+
+    newBookmarkElement.appendChild(bookmarkTitleElement);
+    bookmarksElement.appendChild(newBookmarkElement);
+};
+
+const viewBookmarks = (currentBookmarks = []) => {
+    // from HTML in window
+    const bookmarksElement = document.getElementById('bookmarks');
+    bookmarksElement.innerHTML = '';
+
+    if (currentBookmarks.length > 0) {
+        for (let i = 0; i < currentBookmarks.length; i++) {
+            const bookmark = currentBookmarks[i];
+            console.log('Iterating through bookmarks', bookmark);
+            addNewBookmark(bookmarksElement, bookmark);
+        }
+    } else {
+        bookmarksElement.innerHTML = '<i class="row">no bookmarks to show</i>';
+    }
+};
 
 const onPlay = (e) => {};
 
@@ -24,9 +53,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             const currentVideoBookmarks = data[currentVideo]
                 ? JSON.parse(data[currentVideo])
                 : [];
-        });
 
-        // viewBookmarks
+            viewBookmarks(currentVideoBookmarks);
+            console.log('All current bookmarks ->', currentVideoBookmarks);
+        });
     } else {
         const container = document.getElementsByClassName('container')[0];
 
