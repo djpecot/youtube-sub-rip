@@ -40,7 +40,16 @@ const viewBookmarks = (currentBookmarks = []) => {
     }
 };
 
-const onPlay = (e) => {};
+const onPlay = async (e) => {
+    const bookmarkTime =
+        e.target.parentNode.parentNode.getAttribute('timestamp');
+    const activeTab = await getCurrentTab();
+
+    chrome.tabs.sendMessage(activeTab.id, {
+        type: 'PLAY',
+        value: bookmarkTime,
+    });
+};
 
 const onDelete = (e) => {};
 
