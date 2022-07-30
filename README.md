@@ -49,3 +49,4 @@ None so far 😅
 ## Resources
 
 -   [Code Camp MV3 YT extension tutorial](https://www.youtube.com/watch?v=0n809nd4Zu4)
+-   [MV2 YT Screenshot recorder](https://github.com/FutureMillennium/Screenshot-YouTube)
