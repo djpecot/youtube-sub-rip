@@ -14,12 +14,15 @@ const getTime = (t) => {
 
     chrome.runtime.onMessage.addListener((obj, sender, response) => {
         const { type, value, videoId } = obj;
+        console.log('Object being passed in the messenger,', obj);
 
         if (type === 'NEW') {
             currentVideo = videoId;
             newVideoLoaded();
         } else if (type === 'PLAY') {
             youtubePlayer.currentTime = value;
+        } else if (type === 'DELETE') {
+            removeBookmarkEventHandler(value);
         }
     });
 
@@ -50,6 +53,15 @@ const getTime = (t) => {
             youtubeLeftControls.append(bookmarkBtn);
             bookmarkBtn.addEventListener('click', addNewBookmarkEventHandler);
         }
+    };
+
+    const removeBookmarkEventHandler = async (value) => {
+        const currentBookmarks = await fetchBookmarks();
+
+        console.log('Current bookmarks!', currentBookmarks);
+        console.log('Current value!', value);
+        let obj = currentBookmarks.find(({ time }) => time == value);
+        console.log(obj);
     };
 
     const addNewBookmarkEventHandler = async () => {
