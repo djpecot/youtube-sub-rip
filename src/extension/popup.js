@@ -57,10 +57,14 @@ const onDelete = async (e) => {
         e.target.parentNode.parentNode.getAttribute('timestamp');
     const activeTab = await getCurrentTab();
 
-    chrome.tabs.sendMessage(activeTab.id, {
-        type: 'DELETE',
-        value: bookmarkTime,
-    });
+    chrome.tabs.sendMessage(
+        activeTab.id,
+        {
+            type: 'DELETE',
+            value: bookmarkTime,
+        },
+        viewBookmarks
+    );
 };
 
 const setBookmarkAttributes = (src, eventListener, controlParentElement) => {

@@ -23,6 +23,10 @@ const getTime = (t) => {
             youtubePlayer.currentTime = value;
         } else if (type === 'DELETE') {
             removeBookmarkEventHandler(value);
+            // Doug: Response will send the following values back to the source of the object
+            // so we will send back the current videos to popup.js to
+            // re-render
+            response(currentVideoBookmarks);
         }
     });
 
@@ -56,12 +60,13 @@ const getTime = (t) => {
     };
 
     const removeBookmarkEventHandler = async (value) => {
-        const currentBookmarks = await fetchBookmarks();
-
-        console.log('Current bookmarks!', currentBookmarks);
-        console.log('Current value!', value);
-        let obj = currentBookmarks.find(({ time }) => time == value);
-        console.log(obj);
+        currentVideoBookmarks = currentVideoBookmarks.filter(
+            (b) => b.time != value
+        );
+        chrome.storage.sync.set({
+            [currentVideo]: JSON.stringify(currentVideoBookmarks),
+        });
+        console.log('NOw the new bookmarks,', currentVideoBookmarks);
     };
 
     const addNewBookmarkEventHandler = async () => {
@@ -72,7 +77,7 @@ const getTime = (t) => {
         };
 
         currentVideoBookmarks = await fetchBookmarks();
-        // console.log('You added a new bookmark!', newBookmark);
+        console.log('You added a new bookmark!', newBookmark);
         // console.log('What is the current Video?', currentVideo);
         // Doug: Note chrome storage needs to store as JSON @paige
         // We can think about how to store subtitles once extracted, locally for user or?
