@@ -51,3 +51,5 @@ None so far 😅
 -   [Code Camp MV3 YT extension tutorial](https://www.youtube.com/watch?v=0n809nd4Zu4)
 -   [MV2 YT Screenshot recorder](https://github.com/FutureMillennium/Screenshot-YouTube)
 -   [tesseract.js, browser-side OCR solution (will need to presegment text)](https://tesseract.projectnaptha.com/)
+-   [Software solutioin pretty similar to what we need](https://www.videoconverterfactory.com/tips/extract-hardcoded-subtitles.html)
+-   [Chinese Repo using Python, includes bottom of subs pre-processing step](https://github.com/shenbo/video-subtitles-ocr)
