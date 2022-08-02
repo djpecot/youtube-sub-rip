@@ -1,6 +1,6 @@
 # youtube-sub-rip
 
-MV3 Chrome Extension for ripping hard-coded/baked-in/non-CC subtitles from Youtube videos (Watch a lot of videos in Chinese? you'll love this).
+MV3 Chrome Extension for ripping hard-coded/baked-in/non-CC subtitles from Youtube videos (Watch a lot of videos in Chinese? you'll love this). There are too many videos/youtubes that refuse to upload their subtitles to Youtube so that they can be parsed/translated for non-native speaking viewers :(. Rather than try to contact every single youtuber, probably easier (and arguably more fun) to create an extractor. Let's see how it goes.
 
 ![image](https://user-images.githubusercontent.com/8185181/180892201-1e4ff6b9-1e5d-4b32-8639-e0198b4fbcc7.png)
 ![image](https://user-images.githubusercontent.com/8185181/180892400-002953f1-7361-4263-af96-223851878da5.png)
@@ -25,6 +25,17 @@ After installing yarn and cloning this repo, at the top level run `yarn install`
 -   BONUS: Catch "pop-up" subtitles
 
 ## 📋🤯Planning + Brainstorming
+
+### Feature Roadmap
+
+-   [x] Pull in boilerplate and play around with MV3 @doug
+-   [ ] Port extension to use React
+-   [ ] Add ability to screenshot a YT image @doug
+-   [ ] If possible, attempt to build a basic JavaScript subtitle extractor @paige
+    -   [ ] Extract text from video
+    -   [ ] Mark the begining and end timestamps, i.e. 1:00 - 1:03 (check VTT format)
+-   [ ] ?SERVER: Build basic API for processing image data (Python, Django)
+-   [ ] Pizza party?
 
 ### UI
 
